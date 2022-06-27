@@ -9,4 +9,12 @@ giftRouter.route("/pairs")
         res.status(200).json({"names": []})
     })
 
+giftRouter.route("/traditional")
+ .post((req, res) => {
+        // const body = req.params.body
+        // console.log(body.names)
+        // res.send("hi")
+        res.status(200).json({"names": []})
+    })
+
 module.exports = giftRouter;
