@@ -8,7 +8,7 @@ var morgan = require('morgan')
 morgan('tiny')
 
 app.use(express.json())
-app.use(giftRouter)
+app.use("/gift-exchange", giftRouter)
 
 app.get('/', (req,res) => {
     res.send("hello world")
