@@ -2,11 +2,13 @@
 express = require('express')
 const app = express ()
 const port = 3000
+const giftRouter = require("./routes/gift-exchange")
 
 var morgan = require('morgan')
 morgan('tiny')
 
 app.use(express.json())
+app.use(giftRouter)
 
 app.get('/', (req,res) => {
     res.send("hello world")

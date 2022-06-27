@@ -1,5 +1,12 @@
-express = require("express");
-const app = express();
-const port = 3000;
+var express = require('express');
+var giftRouter = express.Router();
 
-module.exports = gift - exchange.js;
+giftRouter.route("/pairs")
+ .post((req, res) => {
+        // const body = req.params.body
+        // console.log(body.names)
+        // res.send("hi")
+        res.status(200).json({"names": []})
+    })
+
+module.exports = giftRouter;
