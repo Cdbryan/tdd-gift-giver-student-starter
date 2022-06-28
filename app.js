@@ -1,3 +1,4 @@
+const {NotFoundError} = require("./utils/errors.js")
 
 express = require('express')
 const app = express ()
@@ -18,8 +19,32 @@ app.get('/health',(req, res) => {
     res.status(200).send({ "ping":"pong"})
 })
 
-app.listen(port, () => {
-    console.log(`example app listening on port ${port}`)
+
+
+app.use((error, req, res, next) => {
+    return next(new NotFoundError)
+})
+
+
+app.use((error, req, res, next) => {
+    if(error.status == null)
+    {
+        var status = 500
+    }
+    else
+    {
+        status = error.status
+    }
+    if(error.message == null)
+    {
+        var error =  "Something wen't wrong in the application"
+    }
+    else 
+    {
+        message = error.message
+    }
+
+    return res.status(status).json({error: {stauts: status, message: message}})
 })
 
 module.exports = app
